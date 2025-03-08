@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 interface Rhythm {
   name: string;
   tempo: number;
-  pattern4: string;
+  pattern4?: string;
   pattern: string;
   notes: string;
 }
@@ -25,6 +25,13 @@ const rhythms: Rhythm[] = [
     // ta tu tidi ta tu tidi
     pattern4: "S X B X S S X X",
     pattern: "S X B X S S X X S X B X S S X X",
+    notes: "A lively rhythm used in festivities.",
+  },
+  {
+    name: "Djole Solo",
+    tempo: 80,
+    // tu tada ti ta da tu taga tiri tara
+    pattern: "B X S S X B S S B X S S T T S S",
     notes: "A lively rhythm used in festivities.",
   },
 ];
@@ -165,7 +172,7 @@ export default function Ritmo() {
     }, (60 / selectedRhythm.tempo / 4) * 1000 + swingDelay);
   };
 
-  const togglePlayRhythm = () => {
+  const playRhythm = () => {
     if (!selectedRhythm || !audioContext || !sounds) return;
 
     if (isPlayingRef.current) {
@@ -186,9 +193,23 @@ export default function Ritmo() {
     return "hidden";
   };
 
+  const stopRhythm = () => {
+    isPlayingRef.current = false;
+    setCurrentBeat(0);
+    if (beatTimeout.current !== undefined) clearTimeout(beatTimeout.current);
+  };
+
   const changeSelectedRhythm = (rhythm: Rhythm) => {
-    togglePlayRhythm();
+    stopRhythm();
     setSelectedRhythm(rhythm);
+  };
+
+  const togglePlayRhythm = () => {
+    if (isPlayingRef.current) {
+      stopRhythm();
+    } else {
+      playRhythm();
+    }
   };
 
   return (
@@ -208,8 +229,9 @@ export default function Ritmo() {
         <div className="mt-6 p-4 border rounded-lg shadow-md bg-white">
           <h2 className="text-2xl font-bold">{selectedRhythm.name}</h2>
           <p className="text-gray-600">Tempo: {selectedRhythm.tempo} BPM</p>
-          <p className="mt-2">{selectedRhythm.notes}</p>
-          <p className="mt-4 font-mono">Pattern: {selectedRhythm.pattern}</p>
+          <p className="mt-4 font-mono">
+            Pattern: {selectedRhythm.pattern4 ?? selectedRhythm.pattern}
+          </p>
 
           <div className="relative my-24 grid grid-cols-16">
             {Array.from({ length: 16 }).map((_, beatIndex) => {
