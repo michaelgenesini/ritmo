@@ -1,83 +1,9 @@
+import { Note } from "@/components/Note";
 import { useState, useEffect, useRef } from "react";
-
-interface Rhythm {
-  name: string;
-  tempo: number;
-  pattern4?: string;
-  pattern: string;
-  notes: string;
-}
-
-// Base pattern 16 notes in 4/4:
-// "O X X X O X X X O X X X O X X X"
-const rhythms: Rhythm[] = [
-  {
-    name: "Djole 1",
-    tempo: 80,
-    // ta tada tidi ta tada tidi
-    pattern4: "S X X S S X T T",
-    pattern: "S X X S S X T T S X X S S X T T",
-    notes: "A lively rhythm used in festivities.",
-  },
-  {
-    name: "Djole 2",
-    tempo: 80,
-    // ta tu tidi ta tu tidi
-    pattern4: "S X B X S S X X",
-    pattern: "S X B X S S X X S X B X S S X X",
-    notes: "A lively rhythm used in festivities.",
-  },
-  {
-    name: "Djole Solo",
-    tempo: 80,
-    // tu tada ti ta da tu taga tiri tara
-    pattern: "B X S S X B S S B X S S T T S S",
-    notes: "A lively rhythm used in festivities.",
-  },
-];
-
-const Bass = () => <div className="w-4 h-4 rounded-full bg-black" />;
-const Tone = () => <div className="w-4 h-4 rounded-full bg-white border" />;
-const Slap = () => (
-  <div className="w-4 h-4 rounded-full bg-white border border-dashed" />
-);
-const Ghost = () => (
-  <div className="w-4 h-4 rounded-full bg-white border border-transparent" />
-);
-
-const Note = ({ note, active }: { note: string; active: boolean }) => {
-  const activeClass = active
-    ? "scale-110" //"border border-red-500 rounded-full"
-    : ""; // "border border-transparent rounded-full";
-
-  switch (note) {
-    case "B":
-    default:
-      return (
-        <div className={activeClass}>
-          <Bass />
-        </div>
-      );
-    case "T":
-      return (
-        <div className={activeClass}>
-          <Tone />
-        </div>
-      );
-    case "S":
-      return (
-        <div className={activeClass}>
-          <Slap />
-        </div>
-      );
-    case "X":
-      return (
-        <div className={activeClass}>
-          <Ghost />
-        </div>
-      );
-  }
-};
+import { loadRhythms, Rhythm } from "@/utils/loadRhythms";
+import { loadSounds } from "@/utils/loadSounds";
+import { getNoteVerticalPosition } from "@/utils/getNoteVerticalPosition";
+import { Button } from "@/components/Button";
 
 interface CardProps {
   children: React.ReactNode;
@@ -95,23 +21,8 @@ function Card({ children, onClick }: CardProps) {
   );
 }
 
-interface ButtonProps {
-  children: React.ReactNode;
-  onClick: () => void;
-}
-
-function Button({ children, onClick }: ButtonProps) {
-  return (
-    <button
-      className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition cursor-pointer"
-      onClick={onClick}
-    >
-      {children}
-    </button>
-  );
-}
-
 export default function Ritmo() {
+  const [rhythms, setRhythms] = useState<Rhythm[]>([]);
   const [selectedRhythm, setSelectedRhythm] = useState<Rhythm | null>(null);
   const [audioContext, setAudioContext] = useState<AudioContext | null>(null);
   const [sounds, setSounds] = useState<{ [key: string]: AudioBuffer } | null>(
@@ -123,25 +34,15 @@ export default function Ritmo() {
 
   const swingRatio = 1;
 
+  const runloadSounds = loadSounds({ setAudioContext, setSounds });
+
+  useEffect(() => {
+    loadRhythms().then(setRhythms);
+  }, []);
+
   // Load sounds
   useEffect(() => {
-    const loadSounds = async () => {
-      const context = new AudioContext();
-      setAudioContext(context);
-
-      const soundNames = ["B", "S", "T"];
-      const buffers: { [key: string]: AudioBuffer } = {};
-
-      for (const name of soundNames) {
-        const response = await fetch(`/sounds/${name}.mp3`);
-        const arrayBuffer = await response.arrayBuffer();
-        buffers[name] = await context.decodeAudioData(arrayBuffer);
-      }
-
-      setSounds(buffers);
-    };
-
-    loadSounds();
+    runloadSounds();
   }, []);
 
   const scheduleNextBeat = (index: number) => {
@@ -186,13 +87,6 @@ export default function Ritmo() {
     scheduleNextBeat(0);
   };
 
-  const getVerticalPosition = (note: string) => {
-    if (note === "B") return "top-0";
-    if (note === "T") return "top-1/2 transform -translate-y-1/2";
-    if (note === "S") return "bottom-0";
-    return "hidden";
-  };
-
   const stopRhythm = () => {
     isPlayingRef.current = false;
     setCurrentBeat(0);
@@ -212,65 +106,109 @@ export default function Ritmo() {
     }
   };
 
+  const getNumberOfBeats = (rhythm: Rhythm) => {
+    switch (rhythm.timeSignature) {
+      case "4/4":
+      default:
+        return 16;
+      case "3/4":
+        return 12;
+    }
+  };
+
   return (
     <div className="p-6 max-w-4xl mx-auto">
       <h1 className="text-3xl font-bold mb-4">Ritmo - Percussion Rhythms</h1>
-      <p className="text-gray-600 mb-6">Select a rhythm to play.</p>
+      <p className="text-gray-600 mb-4">Select a rhythm to play.</p>
+      <div className="mb-8">
+        {selectedRhythm && (
+          <div className="mt-6 p-4 border rounded-lg shadow-md bg-white">
+            <h2 className="text-2xl font-bold">{selectedRhythm.name}</h2>
+            <p className="text-gray-500">
+              <b>Tempo:</b>
+              <br />
+              {selectedRhythm.tempo} BPM
+            </p>
+            <p className="text-gray-500">
+              <b>Time signature:</b>
+              <br />
+              {selectedRhythm.timeSignature}
+            </p>
+            <p className="text-gray-500">
+              <b>Vocal Pattern:</b>
+              <br />
+              {selectedRhythm.vocal_pattern || "-"}
+            </p>
+            <p className="text-gray-500">
+              <b>Pattern:</b>
+              <br />
+              {selectedRhythm.pattern4 ?? selectedRhythm.pattern}
+            </p>
+
+            <div className="relative my-24 grid grid-cols-16">
+              {Array.from({ length: getNumberOfBeats(selectedRhythm) }).map(
+                (_, beatIndex) => {
+                  const note =
+                    selectedRhythm.pattern.split(" ")[
+                      beatIndex % selectedRhythm.pattern.split(" ").length
+                    ];
+                  return (
+                    <div
+                      key={beatIndex}
+                      className="relative w-full h-16 flex flex-col items-center"
+                    >
+                      {/* Number */}
+                      {beatIndex % 4 === 0 && (
+                        <div className="absolute -top-8 font-bold">
+                          {beatIndex / 4 + 1}
+                        </div>
+                      )}
+
+                      {/* Horizontal */}
+                      <div className="absolute top-1/2 left-0 w-full border-t border-gray-300"></div>
+                      {/* Vertical */}
+                      <div className="absolute top-0 left-1/2 h-full border-l border-gray-300"></div>
+
+                      {/* Note */}
+                      {note && (
+                        <div
+                          className={`absolute ${getNoteVerticalPosition(
+                            note
+                          )}`}
+                        >
+                          <Note
+                            note={note}
+                            active={currentBeat === beatIndex}
+                          />
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
+              )}
+            </div>
+            <Button onClick={togglePlayRhythm}>
+              {isPlayingRef.current ? "Pause" : "Play"}
+            </Button>
+          </div>
+        )}
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {rhythms.map((rhythm, index) => (
           <Card key={index} onClick={() => changeSelectedRhythm(rhythm)}>
             <h2 className="text-xl font-semibold">{rhythm.name}</h2>
             <p className="text-gray-500">Tempo: {rhythm.tempo} BPM</p>
+            <p className="text-gray-500">
+              Time signature: {rhythm.timeSignature}
+            </p>
+            <p className="text-gray-500">
+              Vocal Pattern: {rhythm.vocal_pattern || "-"}
+            </p>
+            <p className="text-gray-500">Pattern: {rhythm.pattern}</p>
           </Card>
         ))}
       </div>
-
-      {selectedRhythm && (
-        <div className="mt-6 p-4 border rounded-lg shadow-md bg-white">
-          <h2 className="text-2xl font-bold">{selectedRhythm.name}</h2>
-          <p className="text-gray-600">Tempo: {selectedRhythm.tempo} BPM</p>
-          <p className="mt-4 font-mono">
-            Pattern: {selectedRhythm.pattern4 ?? selectedRhythm.pattern}
-          </p>
-
-          <div className="relative my-24 grid grid-cols-16">
-            {Array.from({ length: 16 }).map((_, beatIndex) => {
-              const note =
-                selectedRhythm.pattern.split(" ")[
-                  beatIndex % selectedRhythm.pattern.split(" ").length
-                ];
-              return (
-                <div
-                  key={beatIndex}
-                  className="relative w-full h-16 flex flex-col items-center"
-                >
-                  {/* Number */}
-                  {beatIndex % 4 === 0 && (
-                    <div className="absolute -top-8 font-bold">
-                      {beatIndex / 4 + 1}
-                    </div>
-                  )}
-
-                  {/* Horizontal */}
-                  <div className="absolute top-1/2 left-0 w-full border-t border-gray-300"></div>
-                  {/* Vertical */}
-                  <div className="absolute top-0 left-1/2 h-full border-l border-gray-300"></div>
-
-                  {/* Note */}
-                  {note && (
-                    <div className={`absolute ${getVerticalPosition(note)}`}>
-                      <Note note={note} active={currentBeat === beatIndex} />
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-          <Button onClick={togglePlayRhythm}>
-            {isPlayingRef.current ? "Pause" : "Play"}
-          </Button>
-        </div>
-      )}
     </div>
   );
 }
