@@ -4,35 +4,26 @@ import { loadRhythms, Rhythm } from "@/utils/loadRhythms";
 import { loadSounds } from "@/utils/loadSounds";
 import { getNoteVerticalPosition } from "@/utils/getNoteVerticalPosition";
 import { Button } from "@/components/Button";
-
-interface CardProps {
-  children: React.ReactNode;
-  onClick: () => void;
-}
-
-function Card({ children, onClick }: CardProps) {
-  return (
-    <div
-      className="border rounded-lg shadow-md p-4 cursor-pointer hover:shadow-lg transition"
-      onClick={onClick}
-    >
-      {children}
-    </div>
-  );
-}
+import { Card } from "@/components/Card";
 
 export default function Ritmo() {
+  const [tempo, setTempo] = useState(80);
   const [rhythms, setRhythms] = useState<Rhythm[]>([]);
-  const [selectedRhythm, setSelectedRhythm] = useState<Rhythm | null>(null);
+  const [activeRhythms, setActiveRhythms] = useState<Rhythm[]>([]);
   const [audioContext, setAudioContext] = useState<AudioContext | null>(null);
   const [sounds, setSounds] = useState<{ [key: string]: AudioBuffer } | null>(
     null
   );
-  const [currentBeat, setCurrentBeat] = useState<number>(0);
+  const [currentBeats, setCurrentBeats] = useState<{ [key: string]: number }>(
+    {}
+  );
   const isPlayingRef = useRef<boolean>(false);
-  const beatTimeout = useRef<NodeJS.Timeout | undefined>(undefined);
+  const beatTimeouts = useRef<{ [key: string]: NodeJS.Timeout | undefined }>(
+    {}
+  );
 
-  const swingRatio = 1;
+  const [swingRatio, setSwingRatio] = useState(1);
+  const SWING_DIVIDER = 3;
 
   const runloadSounds = loadSounds({ setAudioContext, setSounds });
 
@@ -40,18 +31,24 @@ export default function Ritmo() {
     loadRhythms().then(setRhythms);
   }, []);
 
-  // Load sounds
   useEffect(() => {
     runloadSounds();
   }, []);
 
-  const scheduleNextBeat = (index: number) => {
-    if (!isPlayingRef.current || !selectedRhythm || !audioContext || !sounds)
-      return;
+  const getNumberOfSignature = (rhythm: Rhythm) => {
+    return rhythm.timeSignature === "3/4" ? 3 : 4;
+  };
 
-    setCurrentBeat(index);
+  const getNumberOfBeats = (rhythm: Rhythm) => {
+    return rhythm.timeSignature === "3/4" ? 12 : 16;
+  };
 
-    const patternArray = selectedRhythm.pattern.split(" ");
+  const scheduleNextBeat = (rhythm: Rhythm, index: number) => {
+    if (!isPlayingRef.current || !audioContext || !sounds) return;
+
+    setCurrentBeats((prev) => ({ ...prev, [rhythm.name]: index }));
+
+    const patternArray = rhythm.pattern.split(" ");
     const note = patternArray[index % patternArray.length];
 
     if (note !== "X" && sounds[note]) {
@@ -63,151 +60,161 @@ export default function Ritmo() {
 
     const isOffbeat = index % 2 !== 0;
     const swingDelay = isOffbeat
-      ? (60 / selectedRhythm.tempo) * 1000 * (swingRatio - 1)
+      ? ((60 / tempo) * 1000 * (swingRatio - 1)) / SWING_DIVIDER
       : 0;
 
-    beatTimeout.current = setTimeout(() => {
+    beatTimeouts.current[rhythm.name] = setTimeout(() => {
       if (isPlayingRef.current) {
-        scheduleNextBeat((index + 1) % 16);
+        scheduleNextBeat(rhythm, (index + 1) % getNumberOfBeats(rhythm));
       }
-    }, (60 / selectedRhythm.tempo / 4) * 1000 + swingDelay);
+    }, (60 / tempo / getNumberOfSignature(rhythm)) * 1000 + swingDelay);
   };
 
-  const playRhythm = () => {
-    if (!selectedRhythm || !audioContext || !sounds) return;
-
+  const togglePlayAll = () => {
     if (isPlayingRef.current) {
       isPlayingRef.current = false;
-      if (beatTimeout.current !== undefined) clearTimeout(beatTimeout.current);
-      return;
-    }
-
-    isPlayingRef.current = true;
-    setCurrentBeat(0);
-    scheduleNextBeat(0);
-  };
-
-  const stopRhythm = () => {
-    isPlayingRef.current = false;
-    setCurrentBeat(0);
-    if (beatTimeout.current !== undefined) clearTimeout(beatTimeout.current);
-  };
-
-  const changeSelectedRhythm = (rhythm: Rhythm) => {
-    stopRhythm();
-    setSelectedRhythm(rhythm);
-  };
-
-  const togglePlayRhythm = () => {
-    if (isPlayingRef.current) {
-      stopRhythm();
+      Object.values(beatTimeouts.current).forEach((timeout) => {
+        if (timeout !== undefined) clearTimeout(timeout);
+      });
     } else {
-      playRhythm();
+      isPlayingRef.current = true;
+      activeRhythms.forEach((rhythm) => scheduleNextBeat(rhythm, 0));
     }
   };
 
-  const getNumberOfBeats = (rhythm: Rhythm) => {
-    switch (rhythm.timeSignature) {
-      case "4/4":
-      default:
-        return 16;
-      case "3/4":
-        return 12;
-    }
+  const toggleRhythmSelection = (rhythm: Rhythm) => {
+    if (activeRhythms.length > 2) return;
+
+    setActiveRhythms((prev) =>
+      prev.find((r) => r.name === rhythm.name)
+        ? prev.filter((r) => r.name !== rhythm.name)
+        : [...prev, rhythm]
+    );
   };
 
   return (
-    <div className="p-6 max-w-4xl mx-auto">
+    <div className="flex flex-col h-screen p-6 mx-auto grow-0">
       <h1 className="text-3xl font-bold mb-4">Ritmo - Percussion Rhythms</h1>
-      <p className="text-gray-600 mb-4">Select a rhythm to play.</p>
-      <div className="mb-8">
-        {selectedRhythm && (
-          <div className="mt-6 p-4 border rounded-lg shadow-md bg-white">
-            <h2 className="text-2xl font-bold">{selectedRhythm.name}</h2>
-            <p className="text-gray-500">
-              <b>Tempo:</b>
-              <br />
-              {selectedRhythm.tempo} BPM
-            </p>
-            <p className="text-gray-500">
-              <b>Time signature:</b>
-              <br />
-              {selectedRhythm.timeSignature}
-            </p>
-            <p className="text-gray-500">
-              <b>Vocal Pattern:</b>
-              <br />
-              {selectedRhythm.vocal_pattern || "-"}
-            </p>
-            <p className="text-gray-500">
-              <b>Pattern:</b>
-              <br />
-              {selectedRhythm.pattern4 ?? selectedRhythm.pattern}
-            </p>
+      <p className="text-gray-600 mb-4">Select rhythms to play together.</p>
 
-            <div className="relative my-24 grid grid-cols-16">
-              {Array.from({ length: getNumberOfBeats(selectedRhythm) }).map(
-                (_, beatIndex) => {
-                  const note =
-                    selectedRhythm.pattern.split(" ")[
-                      beatIndex % selectedRhythm.pattern.split(" ").length
-                    ];
-                  return (
-                    <div
-                      key={beatIndex}
-                      className="relative w-full h-16 flex flex-col items-center"
-                    >
-                      {/* Number */}
-                      {beatIndex % 4 === 0 && (
-                        <div className="absolute -top-8 font-bold">
-                          {beatIndex / 4 + 1}
-                        </div>
-                      )}
+      <div className="flex flex-col md:flex-row md:space-x-4">
+        {/* Scrollable List */}
+        <div className="md:w-1/3 h-full flex flex-col space-y-4 overflow-y-auto">
+          {rhythms
+            .filter((rhythm) => !rhythm.name.includes("Empty"))
+            .map((rhythm, index) => (
+              <Card
+                key={index}
+                onClick={() => toggleRhythmSelection(rhythm)}
+                rhythm={rhythm}
+                active={activeRhythms.some((r) => r.name === rhythm.name)}
+              />
+            ))}
+        </div>
 
-                      {/* Horizontal */}
-                      <div className="absolute top-1/2 left-0 w-full border-t border-gray-300"></div>
-                      {/* Vertical */}
-                      <div className="absolute top-0 left-1/2 h-full border-l border-gray-300"></div>
-
-                      {/* Note */}
-                      {note && (
-                        <div
-                          className={`absolute ${getNoteVerticalPosition(
-                            note
-                          )}`}
+        <div className="md:w-2/3 h-full ">
+          {/* Sticky Player */}
+          <div className="fixed bottom-0 left-0 w-full md:relative bg-white p-4 border-t">
+            {/* <div className="fixed bottom-0 left-0 w-full bg-white p-4 border-t"> */}
+            <div className="container max-w-4xl mx-auto">
+              {activeRhythms.length > 0 ? (
+                <div className="p-4 rounded-lg bg-white">
+                  {activeRhythms.map((rhythm) => (
+                    <div key={rhythm.name} className="mb-4">
+                      <div className="flex justify-between">
+                        <h2 className="text-2xl font-bold mb-4 text-center">
+                          {rhythm.name}
+                        </h2>
+                        <span
+                          onClick={() => toggleRhythmSelection(rhythm)}
+                          className="cursor-pointer"
                         >
-                          <Note
-                            note={note}
-                            active={currentBeat === beatIndex}
-                          />
-                        </div>
-                      )}
+                          Rimuovi
+                        </span>
+                      </div>
+                      <div className="relative flex pt-12 pb-4 bg-gray-50 rounded-lg">
+                        {Array.from({ length: getNumberOfBeats(rhythm) }).map(
+                          (_, beatIndex) => {
+                            const note =
+                              rhythm.pattern.split(" ")[
+                                beatIndex % rhythm.pattern.split(" ").length
+                              ];
+                            const signature = getNumberOfSignature(rhythm);
+                            return (
+                              <div
+                                key={beatIndex}
+                                className="relative w-full h-16 flex flex-col items-center"
+                              >
+                                {beatIndex % signature === 0 && (
+                                  <div className="absolute -top-8 font-bold">
+                                    {beatIndex / signature + 1}
+                                  </div>
+                                )}
+                                <div className="absolute top-1/2 left-0 w-full border-t border-gray-300"></div>
+                                <div className="absolute top-0 left-1/2 h-full border-l border-gray-300"></div>
+                                {note && (
+                                  <div
+                                    className={`absolute ${getNoteVerticalPosition(
+                                      note
+                                    )}`}
+                                  >
+                                    <Note
+                                      note={note}
+                                      active={
+                                        currentBeats[rhythm.name] === beatIndex
+                                      }
+                                    />
+                                  </div>
+                                )}
+                              </div>
+                            );
+                          }
+                        )}
+                      </div>
                     </div>
-                  );
-                }
+                  ))}
+                </div>
+              ) : (
+                <div className="py-12 text-center">
+                  Select one or more rhythms
+                </div>
               )}
+              <div className="flex items-center justify-center space-x-4 mt-4">
+                <Button onClick={togglePlayAll}>
+                  {isPlayingRef.current ? "Pause" : "Play"}
+                </Button>
+                <Button
+                  onClick={() => setTempo((prev) => Math.max(40, prev - 5))}
+                >
+                  -
+                </Button>
+                <span className="text-lg font-semibold">{tempo} BPM</span>
+                <Button
+                  onClick={() => setTempo((prev) => Math.min(300, prev + 5))}
+                >
+                  +
+                </Button>
+                <Button
+                  onClick={() =>
+                    setSwingRatio((prev) => Math.max(0.8, prev - 0.1))
+                  }
+                >
+                  -
+                </Button>
+                <span className="text-lg font-semibold">
+                  Swing: {swingRatio.toFixed(1)}
+                </span>
+                <Button
+                  onClick={() =>
+                    setSwingRatio((prev) => Math.min(1.5, prev + 0.1))
+                  }
+                >
+                  +
+                </Button>
+              </div>
             </div>
-            <Button onClick={togglePlayRhythm}>
-              {isPlayingRef.current ? "Pause" : "Play"}
-            </Button>
           </div>
-        )}
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {rhythms.map((rhythm, index) => (
-          <Card key={index} onClick={() => changeSelectedRhythm(rhythm)}>
-            <h2 className="text-xl font-semibold">{rhythm.name}</h2>
-            <p className="text-gray-500">Tempo: {rhythm.tempo} BPM</p>
-            <p className="text-gray-500">
-              Time signature: {rhythm.timeSignature}
-            </p>
-            <p className="text-gray-500">
-              Vocal Pattern: {rhythm.vocal_pattern || "-"}
-            </p>
-            <p className="text-gray-500">Pattern: {rhythm.pattern}</p>
-          </Card>
-        ))}
+        </div>
       </div>
     </div>
   );
