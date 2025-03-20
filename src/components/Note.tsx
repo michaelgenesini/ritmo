@@ -6,14 +6,21 @@ const Slap = () => (
   <div className="w-4 h-4 rounded-full bg-white border border-dashed" />
 );
 
+const DoubleSlap = () => (
+  <div className="relative">
+    <div className="w-4 h-4 rounded-full bg-red border border-dashed" />
+    <div className="absolute bottom-0 right-1 w-4 h-4 rounded-full bg-red border border-dashed" />
+  </div>
+);
+
 const Ghost = () => (
   <div className="w-4 h-4 rounded-full bg-white border border-transparent" />
 );
 
 export const Note = ({ note, active }: { note: string; active: boolean }) => {
   const activeClass = active
-    ? "scale-110" //"border border-red-500 rounded-full"
-    : ""; // "border border-transparent rounded-full";
+    ? "outline-2 outline-offset-2 outline-blue-600 rounded-full"
+    : "outline-2 outline-offset-2 outline-transparent rounded-full";
 
   switch (note) {
     case "B":
@@ -27,6 +34,13 @@ export const Note = ({ note, active }: { note: string; active: boolean }) => {
       return (
         <div className={activeClass}>
           <Tone />
+        </div>
+      );
+    case "SS":
+      console.log("SS");
+      return (
+        <div className={activeClass}>
+          <DoubleSlap />
         </div>
       );
     case "S":

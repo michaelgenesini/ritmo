@@ -5,14 +5,24 @@
       "timeSignature": "4/4",
       "vocal_pattern": "",
       "pattern": "O X X X O X X X O X X X O X X X",
-      "notes": ""
+      "notes": "",
+      "hidden": true
     },
     {
       "name": "Empty 3/4",
       "timeSignature": "3/4",
       "vocal_pattern": "",
       "pattern": "O X X O X X O X X O X X",
-      "notes": ""
+      "notes": "",
+      "hidden": true
+    },
+    {
+      "name": "Djole Call",
+      "timeSignature": "4/4",
+      "vocal_pattern": "pra piti pra pra pata pata pata",
+      "pattern": "SS T T SS X SS S S S S S S X T T T",
+      "notes": "",
+      "hidden": true
     },
     {
       "name": "Djole 1",
@@ -31,6 +41,21 @@
       "notes": ""
     },
     {
+      "name": "Djole 3",
+      "timeSignature": "4/4",
+      "vocal_pattern": "pa ta pum pi ti pum",
+      "pattern4": "S S B X T T B X",
+      "pattern": "S S B X T T B X S S B X T T B X",
+      "notes": ""
+    },
+    {
+      "name": "Djole Phrase",
+      "timeSignature": "4/4",
+      "vocal_pattern": "tagatighitaga ti taghitaghiti",
+      "pattern": "S S T T S S X T X S T S T X T X",
+      "notes": ""
+    },
+    {
       "name": "Djole Solo",
       "timeSignature": "4/4",
       "vocal_pattern": "tu tada ti ta da tu taga tiri tara",
@@ -45,26 +70,40 @@
       "notes": ""
     },
     {
+      "name": "Tiriba 1",
+      "timeSignature": "3/4",
+      "vocal_pattern": "tu kitika tuki tika",
+      "pattern": "B X T T S X B T X T S X",
+      "notes": ""
+    },
+    {
+      "name": "Tiriba 2",
+      "timeSignature": "3/4",
+      "vocal_pattern": "ta tidi",
+      "pattern": "S X T T X X S X T T X X",
+      "notes": ""
+    },
+    {
       "name": "Kakilambe 2",
       "timeSignature": "3/4",
       "vocal_pattern": "tu tikitiki tu",
-      "pattern": "B X X T T T T X X B X X",
+      "pattern": "",
       "notes": ""
     },
     {
       "name": "Kuku 1",
       "timeSignature": "4/4",
       "vocal_pattern": "ta tu tidi ta tu tidi",
-      "pattern4": "S X B X S S X X",
-      "pattern": "S X B X S S X X S X B X S S X X",
+      "pattern4": "",
+      "pattern": "",
       "notes": ""
     },
     {
       "name": "Kuku 2",
       "timeSignature": "4/4",
       "vocal_pattern": "tidi tadidada",
-      "pattern4": "T T X S T T S S",
-      "pattern": "T T X S T T S S T T X S T T S S",
+      "pattern4": "",
+      "pattern": "",
       "notes": ""
     },
     {
