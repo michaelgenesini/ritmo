@@ -86,13 +86,13 @@ export default function Ritmo() {
 
   return (
     <div className="flex flex-col h-screen mx-auto grow-0">
-      <div className="container mx-auto max-w-3xl py-4">
-        <h1 className="text-3xl font-bold">Ritmo - Percussion Rhythms</h1>
+      <div className="container mx-auto max-w-3xl p-4">
+        <h1 className="text-3xl font-bold">Ritmo</h1>
       </div>
 
       {/* Scrollable List */}
       <div className="h-full overflow-y-auto">
-        <div className="container mx-auto max-w-3xl flex flex-col space-y-4">
+        <div className="container mx-auto max-w-3xl flex flex-col space-y-4 p-4">
           {rhythms.map((rhythm, index) => (
             <Card
               key={index}
