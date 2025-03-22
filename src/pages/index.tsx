@@ -123,11 +123,11 @@ export default function Ritmo() {
             </div>
           ))}
         </div>
-        <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 align-center justify-center font-semibold ">
+        <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 align-center justify-center font-semibold w-full md:w-auto">
           <Button onClick={togglePlayAll}>
             <span className="px-4 py-2">{isPlaying ? "Pause" : "Play"}</span>
           </Button>
-          <div>
+          <div className="w-full md:w-auto flex align-center justify-between">
             <Button onClick={() => setTempo((prev) => Math.max(40, prev - 5))}>
               <span className="px-4 py-2">-</span>
             </Button>
@@ -136,7 +136,7 @@ export default function Ritmo() {
               <span className="px-4 py-2">+</span>
             </Button>
           </div>
-          <div>
+          <div className="w-full md:w-auto flex align-center justify-between">
             <Button
               onClick={() => setSwingRatio((prev) => Math.max(0.8, prev - 0.1))}
             >

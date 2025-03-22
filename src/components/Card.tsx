@@ -23,16 +23,18 @@ export const Card = ({ active, onClick, rhythm, currentBeats }: Props) => {
   return (
     <div className={className} onClick={onClick}>
       <div className="text-xl font-bold flex aling-center justify-between">
-        <h2>
-          {rhythm.name}{" "}
+        <div className="flex flex-col md:flex-row space-x-2 aling-center justify-center">
+          <h2>{rhythm.name}</h2>
           {rhythm.vocal_pattern && (
-            <span className="ml-4 text-sm">{rhythm.vocal_pattern}</span>
+            <span className="text-sm">{rhythm.vocal_pattern}</span>
           )}
-        </h2>{" "}
-        <span>{rhythm.timeSignature}</span>
+        </div>
+        <div>
+          <span>{rhythm.timeSignature}</span>
+        </div>
       </div>
 
-      <div className="rounded-lg mt-4">
+      <div className="rounded-lg mt-2">
         <div className="relative flex pt-12 pb-4 bg-white rounded-lg">
           {Array.from({ length: numberOfBeats }).map((_, beatIndex) => {
             const note =
