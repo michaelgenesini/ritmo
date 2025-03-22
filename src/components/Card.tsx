@@ -22,9 +22,15 @@ export const Card = ({ active, onClick, rhythm, currentBeats }: Props) => {
 
   return (
     <div className={className} onClick={onClick}>
-      <h2 className="text-xl font-bold flex justify-between">
-        {rhythm.name} <span>{rhythm.timeSignature}</span>
-      </h2>
+      <div className="text-xl font-bold flex aling-center justify-between">
+        <h2>
+          {rhythm.name}{" "}
+          {rhythm.vocal_pattern && (
+            <span className="ml-4 text-sm">{rhythm.vocal_pattern}</span>
+          )}
+        </h2>{" "}
+        <span>{rhythm.timeSignature}</span>
+      </div>
 
       <div className="rounded-lg mt-4">
         <div className="relative flex pt-12 pb-4 bg-white rounded-lg">

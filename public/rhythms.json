@@ -27,13 +27,27 @@
     {
       "name": "Djole 1",
       "timeSignature": "4/4",
-      "vocal_pattern": "ta tada tidi ta tada tidi",
-      "pattern4": "S X X S S X T T",
-      "pattern": "S X X S S X T T S X X S S X T T",
+      "vocal_pattern": "pa ta pum pi ti pum pa ta pum pi ti pum",
+      "pattern4": "S S B X T T B X",
+      "pattern": "S S B X T T B X S S B X T T B X",
       "notes": ""
     },
     {
       "name": "Djole 2",
+      "timeSignature": "4/6",
+      "vocal_pattern": "tu tidi tu tagadagadaga taga",
+      "pattern": "B X X T T X X X B X X X S S S S S S X S S X X X",
+      "notes": ""
+    },
+    {
+      "name": "Djole 3",
+      "timeSignature": "4/4",
+      "vocal_pattern": "ta cata ca tichi ta ca taca tichi",
+      "pattern": "S X S S X S T T S X S X S S T T X",
+      "notes": ""
+    },
+    {
+      "name": "Djole 4",
       "timeSignature": "4/4",
       "vocal_pattern": "ta tu tidi ta tu tidi",
       "pattern4": "S X B X S S X X",
@@ -41,18 +55,18 @@
       "notes": ""
     },
     {
-      "name": "Djole 3",
+      "name": "Djole 5",
       "timeSignature": "4/4",
-      "vocal_pattern": "pa ta pum pi ti pum",
-      "pattern4": "S S B X T T B X",
-      "pattern": "S S B X T T B X S S B X T T B X",
+      "vocal_pattern": "ta tada tidi ta tada tidi",
+      "pattern4": "S X X S S X T T",
+      "pattern": "S X X S S X T T S X X S S X T T",
       "notes": ""
     },
     {
       "name": "Djole Phrase",
       "timeSignature": "4/4",
-      "vocal_pattern": "tagatighitaga ti taghitaghiti",
-      "pattern": "S S T T S S X T X S T S T X T X",
+      "vocal_pattern": "tagatighitaga ta taghitaghiti",
+      "pattern": "S S T T S S X S X S S T T X T X",
       "notes": ""
     },
     {
@@ -70,10 +84,17 @@
       "notes": ""
     },
     {
+      "name": "Kakilambe 2",
+      "timeSignature": "3/4",
+      "vocal_pattern": "ta kita ta kita",
+      "pattern": "S X T S X X S X T S X X",
+      "notes": ""
+    },
+    {
       "name": "Tiriba 1",
       "timeSignature": "3/4",
       "vocal_pattern": "tu kitika tuki tika",
-      "pattern": "B X T T S X B T X T S X",
+      "pattern": "B T T X S X B T X T S X",
       "notes": ""
     },
     {
@@ -93,28 +114,35 @@
     {
       "name": "Kuku 1",
       "timeSignature": "4/4",
-      "vocal_pattern": "ta tu tidi ta tu tidi",
-      "pattern4": "",
-      "pattern": "",
+      "vocal_pattern": "pa tum pete",
+      "pattern4": "S X B X X T T X",
+      "pattern": "S X B X T T X X S X B X T T X X",
       "notes": ""
     },
     {
       "name": "Kuku 2",
       "timeSignature": "4/4",
-      "vocal_pattern": "tidi tadidada",
-      "pattern4": "",
-      "pattern": "",
+      "vocal_pattern": "tidi tadidida",
+      "pattern4": "T T X S T S S X",
+      "pattern": "T T X S T T S X T T X S T T S X",
       "notes": ""
     },
     {
-      "name": "Tansole",
+      "name": "Ngoron 1",
+      "timeSignature": "4/4",
+      "vocal_pattern": "pa pata piti pa pata piti",
+      "pattern": "S X X S S X T T S X X S S X T T",
+      "notes": ""
+    },
+    {
+      "name": "Ngoron 2",
       "timeSignature": "4/4",
       "vocal_pattern": "",
       "pattern": "",
       "notes": ""
     },
     {
-      "name": "Tiriba",
+      "name": "Tansole",
       "timeSignature": "4/4",
       "vocal_pattern": "",
       "pattern": "",
