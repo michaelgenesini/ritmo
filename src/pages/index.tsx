@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import { loadRhythms, Rhythm } from "@/utils/loadRhythms";
 import { loadSounds } from "@/utils/loadSounds";
 import { Button } from "@/components/Button";
