@@ -171,7 +171,7 @@
     {
       "name": "Cumbia 1",
       "timeSignature": "4/4",
-      "instrument": "cowbell",
+      "instrument": "cowbell-dry",
       "vocal_pattern": "ta tada ta tada",
       "pattern": "T X T T T X T T T X T T T X T T",
       "notes": ""
