@@ -2,6 +2,7 @@ export interface Rhythm {
   name: string;
   tempo: number;
   timeSignature: string;
+  instrument: "djembe" | "bell";
   vocal_pattern?: string;
   pattern4?: string;
   pattern: string;

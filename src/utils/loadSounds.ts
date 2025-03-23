@@ -9,7 +9,7 @@ export const loadSounds =
     const context = new AudioContext();
     setAudioContext(context);
 
-    const soundNames = ["B", "S", "T"];
+    const soundNames = ["djembe_B", "djembe_S", "djembe_T", "cowbell_T"];
     const buffers: { [key: string]: AudioBuffer } = {};
 
     for (const name of soundNames) {

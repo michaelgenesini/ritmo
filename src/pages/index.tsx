@@ -43,10 +43,11 @@ export default function Ritmo() {
 
     const patternArray = rhythm.pattern.split(" ");
     const note = patternArray[index % patternArray.length];
+    const soundNote = sounds[`${rhythm.instrument}_${note}`];
 
-    if (note !== "X" && sounds[note]) {
+    if (note !== "X" && soundNote) {
       const source = audioContext.createBufferSource();
-      source.buffer = sounds[note];
+      source.buffer = soundNote;
       source.connect(audioContext.destination);
       source.start();
     }

@@ -3,6 +3,7 @@
     {
       "name": "Empty 4/4",
       "timeSignature": "4/4",
+      "instrument": "djembe",
       "vocal_pattern": "",
       "pattern": "O X X X O X X X O X X X O X X X",
       "notes": "",
@@ -11,6 +12,7 @@
     {
       "name": "Empty 3/4",
       "timeSignature": "3/4",
+      "instrument": "djembe",
       "vocal_pattern": "",
       "pattern": "O X X O X X O X X O X X",
       "notes": "",
@@ -19,6 +21,7 @@
     {
       "name": "Djole Call",
       "timeSignature": "4/4",
+      "instrument": "djembe",
       "vocal_pattern": "pra piti pra pra pata pata pata",
       "pattern": "SS T T SS X SS S S S S S S X T T T",
       "notes": "",
@@ -27,6 +30,7 @@
     {
       "name": "Djole 1",
       "timeSignature": "4/4",
+      "instrument": "djembe",
       "vocal_pattern": "pa ta pum pi ti pum pa ta pum pi ti pum",
       "pattern4": "S S B X T T B X",
       "pattern": "S S B X T T B X S S B X T T B X",
@@ -35,6 +39,7 @@
     {
       "name": "Djole 2",
       "timeSignature": "4/6",
+      "instrument": "djembe",
       "vocal_pattern": "tu tidi tu tagadagadaga taga",
       "pattern": "B X X T T X X X B X X X S S S S S S X S S X X X",
       "notes": ""
@@ -42,6 +47,7 @@
     {
       "name": "Djole 3",
       "timeSignature": "4/4",
+      "instrument": "djembe",
       "vocal_pattern": "ta cata ca tichi ta ca taca tichi",
       "pattern": "S X S S X S T T S X S X S S T T X",
       "notes": ""
@@ -49,6 +55,7 @@
     {
       "name": "Djole 4",
       "timeSignature": "4/4",
+      "instrument": "djembe",
       "vocal_pattern": "ta tu tidi ta tu tidi",
       "pattern4": "S X B X S S X X",
       "pattern": "S X B X S S X X S X B X S S X X",
@@ -57,6 +64,7 @@
     {
       "name": "Djole 5",
       "timeSignature": "4/4",
+      "instrument": "djembe",
       "vocal_pattern": "ta tada tidi ta tada tidi",
       "pattern4": "S X X S S X T T",
       "pattern": "S X X S S X T T S X X S S X T T",
@@ -65,6 +73,7 @@
     {
       "name": "Djole Phrase",
       "timeSignature": "4/4",
+      "instrument": "djembe",
       "vocal_pattern": "tagatighitaga ta taghitaghiti",
       "pattern": "S S T T S S X S X S S T T X T X",
       "notes": ""
@@ -72,6 +81,7 @@
     {
       "name": "Djole Solo",
       "timeSignature": "4/4",
+      "instrument": "djembe",
       "vocal_pattern": "tu tada ti ta da tu taga tiri tara",
       "pattern": "B X S S X B S S B X S S T T S S",
       "notes": ""
@@ -79,6 +89,7 @@
     {
       "name": "Kakilambe 1",
       "timeSignature": "3/4",
+      "instrument": "djembe",
       "vocal_pattern": "tu kitika tuki tika",
       "pattern": "B X T T S X B T X T S X",
       "notes": ""
@@ -86,6 +97,7 @@
     {
       "name": "Kakilambe 2",
       "timeSignature": "3/4",
+      "instrument": "djembe",
       "vocal_pattern": "ta kita ta kita",
       "pattern": "S X T S X X S X T S X X",
       "notes": ""
@@ -93,6 +105,7 @@
     {
       "name": "Tiriba 1",
       "timeSignature": "3/4",
+      "instrument": "djembe",
       "vocal_pattern": "tu kitika tuki tika",
       "pattern": "B T T X S X B T X T S X",
       "notes": ""
@@ -100,6 +113,7 @@
     {
       "name": "Tiriba 2",
       "timeSignature": "3/4",
+      "instrument": "djembe",
       "vocal_pattern": "ta tidi",
       "pattern": "S X T T X X S X T T X X",
       "notes": ""
@@ -107,6 +121,7 @@
     {
       "name": "Kakilambe 2",
       "timeSignature": "3/4",
+      "instrument": "djembe",
       "vocal_pattern": "tu tikitiki tu",
       "pattern": "",
       "notes": ""
@@ -114,6 +129,7 @@
     {
       "name": "Kuku 1",
       "timeSignature": "4/4",
+      "instrument": "djembe",
       "vocal_pattern": "pa tum pete",
       "pattern4": "S X B X X T T X",
       "pattern": "S X B X T T X X S X B X T T X X",
@@ -122,6 +138,7 @@
     {
       "name": "Kuku 2",
       "timeSignature": "4/4",
+      "instrument": "djembe",
       "vocal_pattern": "tidi tadidida",
       "pattern4": "T T X S T S S X",
       "pattern": "T T X S T T S X T T X S T T S X",
@@ -130,6 +147,7 @@
     {
       "name": "Ngoron 1",
       "timeSignature": "4/4",
+      "instrument": "djembe",
       "vocal_pattern": "pa pata piti pa pata piti",
       "pattern": "S X X S S X T T S X X S S X T T",
       "notes": ""
@@ -137,6 +155,7 @@
     {
       "name": "Ngoron 2",
       "timeSignature": "4/4",
+      "instrument": "djembe",
       "vocal_pattern": "",
       "pattern": "",
       "notes": ""
@@ -144,8 +163,25 @@
     {
       "name": "Tansole",
       "timeSignature": "4/4",
+      "instrument": "djembe",
       "vocal_pattern": "",
       "pattern": "",
+      "notes": ""
+    },
+    {
+      "name": "Cumbia 1",
+      "timeSignature": "4/4",
+      "instrument": "cowbell",
+      "vocal_pattern": "ta tada ta tada",
+      "pattern": "T X T T T X T T T X T T T X T T",
+      "notes": ""
+    },
+    {
+      "name": "Cumbia 2",
+      "timeSignature": "4/4",
+      "instrument": "djembe",
+      "vocal_pattern": "tum ti tum ta tum ti tum tada",
+      "pattern": "B X T X B X S X B X T X B X S S",
       "notes": ""
     }
   ]
