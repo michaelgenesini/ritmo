@@ -19,16 +19,39 @@
       "hidden": true
     },
     {
-      "name": "Djole Call",
-      "timeSignature": "4/4",
+      "name": "Djole - Call",
+      "timeSignature": "4/8",
       "instrument": "djembe",
-      "vocal_pattern": "pra piti pra pra pata pata pata",
-      "pattern": "SS T T SS X SS S S S S S S X T T T",
-      "notes": "",
-      "hidden": true
+      "vocal_pattern": "pra piti pra pra pata pata pata pa pa pa",
+      "pattern": "SS X X T T X SS X X X SS X S S X S S X S S X X X X T X T X T X X X",
+      "notes": ""
     },
     {
-      "name": "Djole 1",
+      "name": "Djole - Phrase 1",
+      "timeSignature": "4/8",
+      "instrument": "djembe",
+      "vocal_pattern": "pra piti pra piti pra pra piti pra",
+      "pattern": "SS X X T T X SS X X T T X SS X X X SS X X T T X SS X B X X X B X X X",
+      "notes": ""
+    },
+    {
+      "name": "Djole - Phrase 2",
+      "timeSignature": "4/4",
+      "instrument": "djembe",
+      "vocal_pattern": "tu tada ti ta da tu taga tiri tara",
+      "pattern": "B X S S X B S S B X S S T T S S",
+      "notes": ""
+    },
+    {
+      "name": "Djole - Phrase 3",
+      "timeSignature": "4/4",
+      "instrument": "djembe",
+      "vocal_pattern": "tagatighitaga ti taghitaghiti",
+      "pattern": "S S T T S S X T X S T T S X S X",
+      "notes": ""
+    },
+    {
+      "name": "Djole - Accompaniment 1",
       "timeSignature": "4/4",
       "instrument": "djembe",
       "vocal_pattern": "pa ta pum pi ti pum pa ta pum pi ti pum",
@@ -37,7 +60,7 @@
       "notes": ""
     },
     {
-      "name": "Djole 2",
+      "name": "Djole - Accompaniment 2",
       "timeSignature": "4/6",
       "instrument": "djembe",
       "vocal_pattern": "tu tidi tu tagadagadaga taga",
@@ -45,7 +68,7 @@
       "notes": ""
     },
     {
-      "name": "Djole 3",
+      "name": "Djole - Accompaniment 3",
       "timeSignature": "4/4",
       "instrument": "djembe",
       "vocal_pattern": "ta cata ca tichi ta ca taca tichi",
@@ -53,7 +76,7 @@
       "notes": ""
     },
     {
-      "name": "Djole 4",
+      "name": "Djole - Accompaniment 4",
       "timeSignature": "4/4",
       "instrument": "djembe",
       "vocal_pattern": "ta tu tidi ta tu tidi",
@@ -62,28 +85,12 @@
       "notes": ""
     },
     {
-      "name": "Djole 5",
+      "name": "Djole - Accompaniment 5",
       "timeSignature": "4/4",
       "instrument": "djembe",
       "vocal_pattern": "ta tada tidi ta tada tidi",
       "pattern4": "S X X S S X T T",
       "pattern": "S X X S S X T T S X X S S X T T",
-      "notes": ""
-    },
-    {
-      "name": "Djole Phrase",
-      "timeSignature": "4/4",
-      "instrument": "djembe",
-      "vocal_pattern": "tagatighitaga ta taghitaghiti",
-      "pattern": "S S T T S S X S X S S T T X T X",
-      "notes": ""
-    },
-    {
-      "name": "Djole Solo",
-      "timeSignature": "4/4",
-      "instrument": "djembe",
-      "vocal_pattern": "tu tada ti ta da tu taga tiri tara",
-      "pattern": "B X S S X B S S B X S S T T S S",
       "notes": ""
     },
     {

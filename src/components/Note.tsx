@@ -37,7 +37,6 @@ export const Note = ({ note, active }: { note: string; active: boolean }) => {
         </div>
       );
     case "SS":
-      console.log("SS");
       return (
         <div className={activeClass}>
           <DoubleSlap />

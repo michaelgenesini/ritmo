@@ -23,7 +23,7 @@ export const Card = ({ active, onClick, rhythm, currentBeats }: Props) => {
   return (
     <div className={className} onClick={onClick}>
       <div className="text-xl font-bold flex items-center md:items-start justify-between">
-        <div className="flex flex-col md:flex-row space-x-2 justify-center">
+        <div className="flex flex-col md:flex-row space-x-2 justify-center md:items-center">
           <h2>{rhythm.name}</h2>
           {rhythm.vocal_pattern && (
             <span className="text-sm">{rhythm.vocal_pattern}</span>

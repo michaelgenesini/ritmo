@@ -9,5 +9,7 @@ export const getNumberOfBeats = (rhythm: Rhythm) => {
       return 16;
     case "4/6":
       return 24;
+    case "4/8":
+      return 32;
   }
 };

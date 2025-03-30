@@ -12,6 +12,7 @@ export const loadSounds =
     const soundNames = [
       "djembe_B",
       "djembe_S",
+      "djembe_SS",
       "djembe_T",
       "cowbell_T",
       "cowbell-dry_T",
