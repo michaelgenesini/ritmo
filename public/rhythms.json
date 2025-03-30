@@ -46,7 +46,7 @@
       "name": "Djole - Phrase 3",
       "timeSignature": "4/4",
       "instrument": "djembe",
-      "vocal_pattern": "tagatighitaga ti taghitaghiti",
+      "vocal_pattern": "tagatighitaga ti taghitiga ta",
       "pattern": "S S T T S S X T X S T T S X S X",
       "notes": ""
     },
@@ -80,8 +80,7 @@
       "timeSignature": "4/4",
       "instrument": "djembe",
       "vocal_pattern": "ta tu tidi ta tu tidi",
-      "pattern4": "S X B X S S X X",
-      "pattern": "S X B X S S X X S X B X S S X X",
+      "pattern": "S X B X T T X X S X B X T T X X",
       "notes": ""
     },
     {
@@ -174,6 +173,23 @@
       "vocal_pattern": "",
       "pattern": "",
       "notes": ""
+    },
+    {
+      "name": "Garanghedon",
+      "timeSignature": "3/4",
+      "instrument": "djembe",
+      "vocal_pattern": "tu ta ti ta tu taghidi da",
+      "pattern": "B S X T S X B S T T S X",
+      "notes": ""
+    },
+    {
+      "name": "Garanghedon 2",
+      "timeSignature": "3/4",
+      "instrument": "djembe",
+      "vocal_pattern": "ta tu tidi ta tu tidi",
+      "pattern": "O X X O X X O X X O X X",
+      "notes": "",
+      "hidden": true
     },
     {
       "name": "Cumbia 1",
