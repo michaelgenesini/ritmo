@@ -93,13 +93,15 @@ export default function Ritmo() {
 
   return (
     <div className="flex flex-col h-screen mx-auto grow-0">
-      <div className="container mx-auto max-w-3xl p-4 flex justify-between align-center">
-        <h1 className="text-3xl font-bold">Ritmo</h1>
+      <div className="border-b-2 border-gray-200">
+        <div className="container mx-auto max-w-3xl p-4 flex-col">
+          <h1 className="text-3xl font-bold">Ritmo</h1>
+        </div>
       </div>
 
       {/* Scrollable List */}
       <div className="h-full overflow-y-auto">
-        <div className="container mx-auto max-w-3xl flex flex-col space-y-4 p-4">
+        <div className="container mx-auto max-w-3xl flex flex-col space-y-4 p-2 md:p-4">
           {rhythms.map((rhythm, index) => (
             <Card
               key={index}
@@ -120,7 +122,7 @@ export default function Ritmo() {
               className="px-2 rounded bg-gray-100 cursor-pointer border-2 border-blue-600 hover:border-gray-500"
               onClick={() => toggleRhythmSelection(rhythm)}
             >
-              {rhythm.name}
+              {rhythm.name} x
             </div>
           ))}
         </div>

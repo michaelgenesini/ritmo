@@ -13,7 +13,7 @@ type Props = {
 
 export const Card = ({ active, onClick, rhythm, currentBeats }: Props) => {
   const baseClassName =
-    "border-2 bg-gray-50 hover:bg-gray-100 rounded-lg p-4 cursor-pointer transition";
+    "border-2 bg-gray-50 hover:bg-gray-100 rounded-lg p-2 md:p-4 cursor-pointer transition";
   const className = active
     ? `${baseClassName} border-blue-600`
     : `${baseClassName} border-gray-200`;

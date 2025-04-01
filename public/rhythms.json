@@ -20,7 +20,7 @@
     },
     {
       "name": "Djole - Call",
-      "timeSignature": "4/8",
+      "timeSignature": "4/4 8",
       "instrument": "djembe",
       "vocal_pattern": "pra piti pra pra pata pata pata pa pa pa",
       "pattern": "SS X X T T X SS X X X SS X S S X S S X S S X X X X T X T X T X X X",
@@ -28,7 +28,7 @@
     },
     {
       "name": "Djole - Phrase 1",
-      "timeSignature": "4/8",
+      "timeSignature": "4/4 8",
       "instrument": "djembe",
       "vocal_pattern": "pra piti pra piti pra pra piti pra",
       "pattern": "SS X X T T X SS X X T T X SS X X X SS X X T T X SS X B X X X B X X X",
@@ -61,7 +61,7 @@
     },
     {
       "name": "Djole - Accompaniment 2",
-      "timeSignature": "4/6",
+      "timeSignature": "4/4 6",
       "instrument": "djembe",
       "vocal_pattern": "tu tidi tu tagadagadaga taga",
       "pattern": "B X X T T X X X B X X X S S S S S S X S S X X X",
@@ -81,7 +81,8 @@
       "instrument": "djembe",
       "vocal_pattern": "ta tu tidi ta tu tidi",
       "pattern": "S X B X T T X X S X B X T T X X",
-      "notes": ""
+      "notes": "",
+      "hidden": true
     },
     {
       "name": "Djole - Accompaniment 5",
@@ -130,7 +131,8 @@
       "instrument": "djembe",
       "vocal_pattern": "tu tikitiki tu",
       "pattern": "",
-      "notes": ""
+      "notes": "",
+      "hidden": true
     },
     {
       "name": "Kuku 1",
@@ -156,7 +158,8 @@
       "instrument": "djembe",
       "vocal_pattern": "pa pata piti pa pata piti",
       "pattern": "S X X S S X T T S X X S S X T T",
-      "notes": ""
+      "notes": "",
+      "hidden": true
     },
     {
       "name": "Ngoron 2",
@@ -164,7 +167,8 @@
       "instrument": "djembe",
       "vocal_pattern": "",
       "pattern": "",
-      "notes": ""
+      "notes": "",
+      "hidden": true
     },
     {
       "name": "Tansole",
@@ -172,7 +176,8 @@
       "instrument": "djembe",
       "vocal_pattern": "",
       "pattern": "",
-      "notes": ""
+      "notes": "",
+      "hidden": true
     },
     {
       "name": "Garanghedon",

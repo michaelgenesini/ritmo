@@ -1,20 +1,20 @@
-const Bass = () => <div className="w-4 h-4 rounded-full bg-black" />;
+const Bass = () => <div className="w-3 h-3 rounded-full bg-black" />;
 
-const Tone = () => <div className="w-4 h-4 rounded-full bg-white border" />;
+const Tone = () => <div className="w-3 h-3 rounded-full bg-white border" />;
 
 const Slap = () => (
-  <div className="w-4 h-4 rounded-full bg-white border border-dashed" />
+  <div className="w-3 h-3 rounded-full bg-white border border-dashed" />
 );
 
 const DoubleSlap = () => (
   <div className="relative">
-    <div className="w-4 h-4 rounded-full bg-red border border-dashed" />
-    <div className="absolute bottom-0 right-1 w-4 h-4 rounded-full bg-red border border-dashed" />
+    <div className="w-3 h-3 rounded-full bg-red border border-dashed" />
+    <div className="absolute bottom-0 right-1 w-3 h-3 rounded-full bg-red border border-dashed" />
   </div>
 );
 
 const Ghost = () => (
-  <div className="w-4 h-4 rounded-full bg-white border border-transparent" />
+  <div className="w-3 h-3 rounded-full bg-white border border-transparent" />
 );
 
 export const Note = ({ note, active }: { note: string; active: boolean }) => {
