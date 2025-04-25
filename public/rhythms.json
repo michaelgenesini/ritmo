@@ -86,27 +86,11 @@
       "hidden": true
     },
     {
-      "name": "Djole - Phrase 3",
-      "timeSignature": "4/4",
-      "instrument": "djembe",
-      "vocal_pattern": "tagati taghitiga ta taghitiga ta",
-      "pattern": "S S X T X S T T S X S X S S T T",
-      "notes": ""
-    },
-    {
       "name": "Djole - Phrase 4",
       "timeSignature": "4/4",
       "instrument": "djembe",
-      "vocal_pattern": "tagati taghitiga ta taghitiga ta",
-      "pattern": "S S X T X S T T S X S X S S T T",
-      "notes": ""
-    },
-    {
-      "name": "Djole - Phrase 3",
-      "timeSignature": "4/4",
-      "instrument": "djembe",
-      "vocal_pattern": "tagati taghitiga ta taghitiga ta",
-      "pattern": "S S X T X S T T S X S X S S T T",
+      "vocal_pattern": "tighiti tagatagata tighiti tagatagata",
+      "pattern": "T T T S S S S S T T T S S S S S",
       "notes": ""
     },
     {
@@ -203,7 +187,8 @@
       "instrument": "djembe",
       "vocal_pattern": "tu ta ti ta tu taghidi da",
       "pattern": "B S X T S X B S T T S X",
-      "notes": ""
+      "notes": "",
+      "hidden": true
     },
     {
       "name": "Garanghedon - Accompaniment 2",
@@ -221,7 +206,8 @@
       "instrument": "djembe",
       "vocal_pattern": "tatu ta ta ta",
       "pattern": "S B X S X X S X X S X X X X X X",
-      "notes": ""
+      "notes": "",
+      "hidden": true
     },
     {
       "name": "Cumbia 1",
