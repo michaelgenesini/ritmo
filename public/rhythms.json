@@ -27,34 +27,10 @@
       "notes": ""
     },
     {
-      "name": "Djole - Phrase 1",
-      "timeSignature": "4/4 8",
-      "instrument": "djembe",
-      "vocal_pattern": "pra piti pra piti pra pra piti pra",
-      "pattern": "SS X X T T X SS X X T T X SS X X X SS X X T T X SS X B X X X B X X X",
-      "notes": ""
-    },
-    {
-      "name": "Djole - Phrase 2",
-      "timeSignature": "4/4",
-      "instrument": "djembe",
-      "vocal_pattern": "tu tada ti ta da tu taga tiri tara",
-      "pattern": "B X S S X B S S B X S S T T S S",
-      "notes": ""
-    },
-    {
-      "name": "Djole - Phrase 3",
-      "timeSignature": "4/4",
-      "instrument": "djembe",
-      "vocal_pattern": "tagatighitaga ti taghitiga ta",
-      "pattern": "S S T T S S X T X S T T S X S X",
-      "notes": ""
-    },
-    {
       "name": "Djole - Accompaniment 1",
       "timeSignature": "4/4",
       "instrument": "djembe",
-      "vocal_pattern": "pa ta pum pi ti pum pa ta pum pi ti pum",
+      "vocal_pattern": "pa ta pum pi ti pum",
       "pattern4": "S S B X T T B X",
       "pattern": "S S B X T T B X S S B X T T B X",
       "notes": ""
@@ -85,12 +61,27 @@
       "hidden": true
     },
     {
-      "name": "Djole - Accompaniment 5",
+      "name": "Djole - Phrase 1",
+      "timeSignature": "4/4 8",
+      "instrument": "djembe",
+      "vocal_pattern": "pra piti pra piti pra pra piti pra",
+      "pattern": "SS X X T T X SS X X T T X SS X X X SS X X T T X SS X B X X X B X X X",
+      "notes": ""
+    },
+    {
+      "name": "Djole - Phrase 2",
       "timeSignature": "4/4",
       "instrument": "djembe",
-      "vocal_pattern": "ta tada tidi ta tada tidi",
-      "pattern4": "S X X S S X T T",
-      "pattern": "S X X S S X T T S X X S S X T T",
+      "vocal_pattern": "tu tada ti ta da tu taga tiri tara",
+      "pattern": "B X S S X B S S B X S S T T S S",
+      "notes": ""
+    },
+    {
+      "name": "Djole - Phrase 3",
+      "timeSignature": "4/4",
+      "instrument": "djembe",
+      "vocal_pattern": "tagatighitaga ti taghitiga ta",
+      "pattern": "S S T T S S X T X S T T S X S X",
       "notes": ""
     },
     {
@@ -113,8 +104,8 @@
       "name": "Tiriba 1",
       "timeSignature": "3/4",
       "instrument": "djembe",
-      "vocal_pattern": "tu kitika tuki tika",
-      "pattern": "B T T X S X B T X T S X",
+      "vocal_pattern": "tukati ca tuka tika",
+      "pattern": "B S T X S X B S X T S X",
       "notes": ""
     },
     {
@@ -141,7 +132,8 @@
       "vocal_pattern": "pa tum pete",
       "pattern4": "S X B X X T T X",
       "pattern": "S X B X T T X X S X B X T T X X",
-      "notes": ""
+      "notes": "",
+      "hidden": true
     },
     {
       "name": "Kuku 2",
@@ -150,7 +142,8 @@
       "vocal_pattern": "tidi tadidida",
       "pattern4": "T T X S T S S X",
       "pattern": "T T X S T T S X T T X S T T S X",
-      "notes": ""
+      "notes": "",
+      "hidden": true
     },
     {
       "name": "Ngoron 1",
@@ -180,7 +173,7 @@
       "hidden": true
     },
     {
-      "name": "Garanghedon",
+      "name": "Garanghedon - Accompaniment 1",
       "timeSignature": "3/4",
       "instrument": "djembe",
       "vocal_pattern": "tu ta ti ta tu taghidi da",
@@ -188,13 +181,22 @@
       "notes": ""
     },
     {
-      "name": "Garanghedon 2",
-      "timeSignature": "3/4",
+      "name": "Garanghedon - Accompaniment 2",
+      "timeSignature": "4/4",
       "instrument": "djembe",
-      "vocal_pattern": "ta tu tidi ta tu tidi",
-      "pattern": "O X X O X X O X X O X X",
+      "vocal_pattern": "ta tada tidi ta tada tidi",
+      "pattern4": "S X X S S X T T",
+      "pattern": "S X X S S X T T S X X S S X T T",
       "notes": "",
       "hidden": true
+    },
+    {
+      "name": "Garanghedon - Accompaniment 3",
+      "timeSignature": "3/4",
+      "instrument": "djembe",
+      "vocal_pattern": "tatu ta ta ta",
+      "pattern": "S B X S X X S X X S X X X X X X",
+      "notes": ""
     },
     {
       "name": "Cumbia 1",
