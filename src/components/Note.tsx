@@ -2,6 +2,13 @@ const Bass = () => <div className="w-3 h-3 rounded-full bg-black" />;
 
 const Tone = () => <div className="w-3 h-3 rounded-full bg-white border" />;
 
+const DoubleTone = () => (
+  <div className="relative">
+    <div className="w-3 h-3 rounded-full bg-red border" />
+    <div className="absolute bottom-0 right-1 w-3 h-3 rounded-full bg-red border" />
+  </div>
+);
+
 const Slap = () => (
   <div className="w-3 h-3 rounded-full bg-white border border-dashed" />
 );
@@ -34,6 +41,12 @@ export const Note = ({ note, active }: { note: string; active: boolean }) => {
       return (
         <div className={activeClass}>
           <Tone />
+        </div>
+      );
+    case "TT":
+      return (
+        <div className={activeClass}>
+          <DoubleTone />
         </div>
       );
     case "SS":

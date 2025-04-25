@@ -22,8 +22,8 @@
       "name": "Djole - Call",
       "timeSignature": "4/4 8",
       "instrument": "djembe",
-      "vocal_pattern": "pra piti pra pra pata pata pata pa pa pa",
-      "pattern": "SS X X T T X SS X X X SS X S S X S S X S S X X X X T X T X T X X X",
+      "vocal_pattern": "pra piti pra pri piti piti piti pa pa pa",
+      "pattern": "SS X X T T X SS X X X TT X T T X T T X T T X X X X S X S X S X X X",
       "notes": ""
     },
     {
@@ -70,18 +70,43 @@
     },
     {
       "name": "Djole - Phrase 2",
+      "timeSignature": "4/4 8",
+      "instrument": "djembe",
+      "vocal_pattern": "tighida tighi da tighida tighi da tum tum tum",
+      "pattern": "T T S T T S T T S T T S T T S X B X X X B X X X B X X X B X X X",
+      "notes": ""
+    },
+    {
+      "name": "Djole - Phrase X",
       "timeSignature": "4/4",
       "instrument": "djembe",
       "vocal_pattern": "tu tada ti ta da tu taga tiri tara",
       "pattern": "B X S S X B S S B X S S T T S S",
+      "notes": "",
+      "hidden": true
+    },
+    {
+      "name": "Djole - Phrase 3",
+      "timeSignature": "4/4",
+      "instrument": "djembe",
+      "vocal_pattern": "tagati taghitiga ta taghitiga ta",
+      "pattern": "S S X T X S T T S X S X S S T T",
+      "notes": ""
+    },
+    {
+      "name": "Djole - Phrase 4",
+      "timeSignature": "4/4",
+      "instrument": "djembe",
+      "vocal_pattern": "tagati taghitiga ta taghitiga ta",
+      "pattern": "S S X T X S T T S X S X S S T T",
       "notes": ""
     },
     {
       "name": "Djole - Phrase 3",
       "timeSignature": "4/4",
       "instrument": "djembe",
-      "vocal_pattern": "tagatighitaga ti taghitiga ta",
-      "pattern": "S S T T S S X T X S T T S X S X",
+      "vocal_pattern": "tagati taghitiga ta taghitiga ta",
+      "pattern": "S S X T X S T T S X S X S S T T",
       "notes": ""
     },
     {

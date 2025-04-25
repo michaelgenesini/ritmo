@@ -14,6 +14,7 @@ export const loadSounds =
       "djembe_S",
       "djembe_SS",
       "djembe_T",
+      "djembe_TT",
       "cowbell_T",
       "cowbell-dry_T",
     ];
